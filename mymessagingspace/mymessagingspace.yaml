@@ -1,0 +1,23 @@
+apiVersion: enmasse.io/v1beta1
+kind: AddressSpace
+metadata:
+  name: mymessagingspace
+  annotations:
+    enmasse.io/infra-uuid: mymessagingspace
+spec:
+  type: standard
+  plan: standard-small
+  connector:
+  - name: rabbit
+    endpointHosts: 
+    - host: 192.168.1.111
+      port: 5672
+    credentials:
+      username:
+        value: guest
+      password:
+        value: guest
+#  authenticationService:
+#      type: standard
+  
+
