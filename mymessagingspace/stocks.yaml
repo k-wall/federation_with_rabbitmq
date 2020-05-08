@@ -1,0 +1,12 @@
+apiVersion: enmasse.io/v1beta1
+kind: Address
+metadata:
+  name: mymessagingspace.stocks
+spec:
+  address: stocks
+  type: queue
+  plan: standard-small-queue
+  forwarders:
+  - name: stocksforwarder
+    remoteAddress: rabbit/stocks
+    direction: in

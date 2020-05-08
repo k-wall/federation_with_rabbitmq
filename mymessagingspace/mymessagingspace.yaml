@@ -7,16 +7,19 @@ metadata:
 spec:
   type: standard
   plan: standard-small
-  connector:
+  connectors:
   - name: rabbit
     endpointHosts: 
     - host: 192.168.1.111
       port: 5672
-    credentials:
+    credentialsX:
       username:
         value: guest
       password:
         value: guest
+    addresses:
+    - name: p1
+      pattern: "*"
 #  authenticationService:
 #      type: standard
   
