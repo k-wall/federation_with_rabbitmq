@@ -17,6 +17,19 @@ spec:
         value: guest
       password:
         value: guest
+    tls:
+      caCert:
+        valueFromSecret:
+          name: federation
+          key: ca.crt
+      clientCert:
+        valueFromSecret:
+          name: federation
+          key: tls.crt
+      clientKey:
+        valueFromSecret:
+          name: federation
+          key: tls.key
     addresses:
     - name: p1
       pattern: "*"
