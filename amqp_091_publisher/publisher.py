@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 import json
 import pika
+import ssl
 import time
 import random
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+context = ssl.create_default_context(cafile="/home/keith/src/federation_with_rabbitmq/ca.crt")
+context.load_cert_chain("/home/keith/src/federation_with_rabbitmq/client.crt", "/home/keith/src/federation_with_rabbitmq/client.key")
+ssl_options = pika.SSLOptions(context, "localhost")
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(port=5671, ssl_options=ssl_options, credentials=pika.credentials.ExternalCredentials()))
 channel = connection.channel()
 
 channel.queue_declare(queue='stocks')
