@@ -11,7 +11,7 @@ spec:
   - name: rabbit
     endpointHosts: 
     - host: 192.168.1.111
-      port: 5672
+      port: 5671
     credentialsX:
       username:
         value: guest
@@ -25,11 +25,11 @@ spec:
       clientCert:
         valueFromSecret:
           name: federation
-          key: tls.crt
+          key: client.crt
       clientKey:
         valueFromSecret:
           name: federation
-          key: tls.key
+          key: client.key
     addresses:
     - name: p1
       pattern: "*"
